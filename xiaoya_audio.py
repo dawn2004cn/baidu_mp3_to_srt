@@ -23,7 +23,6 @@ class XiaoyaOS():
         print(f"self.albumId:{self.albumId},self.name:{self.name}")
         self.detailUrl = f"http://api.ximalaya.com/ximalayaos-picture-book/api/content/getAudio?albumId={self.albumId}&name={name}&deviceId=18F0E416C676_9e6380f46382b857&appKey=70eefc246e3c4c749cb7c84d18859d4a&sn=11264_00_100264&sig=10163dd04c586096e5034a946c951f97"
 
-    '''http://api.ximalaya.com/ximalayaos-picture-book/api/content/getAudio?albumId=01334&name=1&sig=2b606e1f6f13256f6746780a198144a0&appKey=70eefc246e3c4c749cb7c84d18859d4a&sn=11264_00_100264&deviceId=9060937892048478765'''
 
     #获取html txt
     def getHouseHtml(self,url):

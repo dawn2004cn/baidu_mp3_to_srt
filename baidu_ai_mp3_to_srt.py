@@ -85,11 +85,11 @@ class BaiduVoiceToTxt():
     # 此函数用于申请访问ai接口的access_token
     def get_access_token(self):
         # 此变量赋值成自己API Key的值
-        #client_id = 'f3wT23Otc8jXlDZ4HGtS4jfT'
-        client_id = 'ETO3wGjlbBhpNfQN1vHel2Ze'
+        client_id = 'f3wT23Otc8jXlDZ4HGtS4jfT'
+        #client_id = 'ETO3wGjlbBhpNfQN1vHel2Ze1'
         # 此变量赋值成自己Secret Key的值
-        #client_secret = 'YPPjW3E0VGPUOfZwhjNGVn7LTu3hwssj'
-        client_secret = 'A30Uvzb4nelDo7llgd2xBAxIvtKWDxEL'
+        client_secret = 'YPPjW3E0VGPUOfZwhjNGVn7LTu3hwssj'
+        #client_secret = 'A30Uvzb4nelDo7llgd2xBAxIvtKWDxEL1'
         auth_url = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=' + client_id + '&client_secret=' + client_secret
 
         response_at = requests.get(auth_url)
