@@ -137,6 +137,7 @@ class BaiduVoiceToTxt():
 if __name__ == "__main__":
     # 实例化
     baidu_voice_to_srt_obj = BaiduVoiceToTxt()
+    #转换该目录下所有子目录中mp3文件
     parent_dir = ".\\xiaoya\\"
     all_parent_path =[]
     all_path = os.listdir(parent_dir)

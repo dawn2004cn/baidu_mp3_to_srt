@@ -14,15 +14,74 @@ class HouseToTxt():
         # 定义初始的文件路径，需要拼接
         self.detailUrl = "http://zjj.sz.gov.cn/ris/bol/szfdc/"
         # 定义将数据写入到test.txt文件
-        self.file = open("test.txt", "w",encoding='utf-8')
+        #self.file = open("test.txt", "w",encoding='utf-8')
     # 析构函数
     def __del__(self):
+        #self.file.close()
+        print(f'__del__:{self.detailUrl}')
+
+    def opencsv(self):
+        self.file = open(self.building_file, "w", encoding='utf-8')
+
+    def closecsv(self):
         self.file.close()
+
+    #根据项目url获取所有楼栋以及branch数据
+    def  parseBuilding(self,url):
+        #获取项目名称，设置生成文件名为项目名称
+        self.getBuildingName(url)
+        #打开文件
+        self.opencsv()
+        buildings = self.getBuilding(url)
+        for building in buildings:
+            branchs = self.getBranch(building)
+            for branch in branchs:
+                self.parseHouse(branch)
+        #关闭文件
+        self.closecsv()
+
+
+    def getBuildingName(self,url):
+        html = self.getHouseHtml(url)
+        print(html)
+        tree = etree.HTML(html, parser=etree.HTMLParser(encoding='utf-8'))
+        name = tree.xpath('.//table[@class="table ta-c table2 table-white"][1]/tr[1]/td[2]/text()')
+        building_name = "".join(name).replace(u'\r\n','').strip()
+        self.building_file = f'{building_name}.csv'
+
+    #根据url 获取楼栋url
+    def getBuilding(self,url):
+        html = self.getHouseHtml(url)
+        print(html)
+        tree = etree.HTML(html, parser=etree.HTMLParser(encoding='utf-8'))
+        building =[]
+        nodes = tree.xpath('.//table[@class="table ta-c table2 table-white"]/tr/td/a/@href')
+        for node in nodes:
+            if len(node) != 0:
+                building.append(self.detailUrl+node)
+        return building
+
+    #获取每栋的座号url
+    def getBranch(self,url):
+        html = self.getHouseHtml(url)
+        print(html)
+        tree = etree.HTML(html, parser=etree.HTMLParser(encoding='utf-8'))
+        branchs =[]
+        nodes = tree.xpath('.//div[@id="divShowBranch"]')
+        for node in nodes:
+            node1s = node.xpath('./a/@href')
+            if len(node1s) != 0:
+                for branch in node1s:
+                 branchs.append(self.detailUrl+branch)
+        return branchs
+
+
     #获取html txt
     def getHouseHtml(self,url):
         html = requests.get(url)
         text = html.text
         return text
+
     #解析房屋url数据
     def parseHouse(self,url):
         html = self.getHouseHtml(url)
@@ -80,7 +139,20 @@ shanhai2 = 'http://zjj.sz.gov.cn/ris/bol/szfdc/building.aspx?id=35384&presellid=
 shanhai3 = 'http://zjj.sz.gov.cn/ris/bol/szfdc/building.aspx?id=35385&presellid=42645'
 huarun1 = 'http://zjj.sz.gov.cn/ris/bol/szfdc/building.aspx?id=35508&presellid=42854'
 huarun2 = 'http://zjj.sz.gov.cn/ris/bol/szfdc/building.aspx?id=35509&presellid=42854'
+huarun = 'http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42854'
+luhui = 'http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42584'
+shanhai = 'http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42645'
+lvdi ='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42833'
+huizhi='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42829'
+chunjiang='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42824'
+qinchengda='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42823'
+longguang='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42816'
+qianhai='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42808'
+huizhan='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42741'
 if __name__ == '__main__':
     house = HouseToTxt()
-    house.parseHouse(huarun1)
-#    house.parseHouse(huarun2)
+    #house.parseBuilding(chunjiang)
+    #house.parseBuilding(qinchengda)
+    #house.parseBuilding(longguang)
+    house.parseBuilding(qianhai)
+    house.parseBuilding(huizhan)
