@@ -133,7 +133,6 @@ bihai3 = 'http://ris.szpl.gov.cn/bol/building.aspx?id=32386&presellid=36452'
 bihai4 = 'http://ris.szpl.gov.cn/bol/building.aspx?id=32386&presellid=36452&Branch=B&isBlock='
 bihai5 = 'http://ris.szpl.gov.cn/bol/building.aspx?id=32385&presellid=36452'
 bihai6 = 'http://ris.szpl.gov.cn/bol/building.aspx?id=32385&presellid=36452&Branch=B&isBlock='
-xiaoya = 'http://api.ximalaya.com/ximalayaos-picture-book/api/content/getAudio?albumId=06937&name=5&deviceId=18F0E416C676_9e6380f46382b857&appKey=70eefc246e3c4c749cb7c84d18859d4a&sn=11264_00_100264&sig=10163dd04c586096e5034a946c951f97'
 shanhai1 = 'http://zjj.sz.gov.cn/ris/bol/szfdc/building.aspx?id=35383&presellid=42645'
 shanhai2 = 'http://zjj.sz.gov.cn/ris/bol/szfdc/building.aspx?id=35384&presellid=42645'
 shanhai3 = 'http://zjj.sz.gov.cn/ris/bol/szfdc/building.aspx?id=35385&presellid=42645'
@@ -149,10 +148,13 @@ qinchengda='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42823'
 longguang='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42816'
 qianhai='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42808'
 huizhan='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42741'
+baochang ='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42713'
+baochang2='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42699'
+jiazhaoye='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42593'
 if __name__ == '__main__':
     house = HouseToTxt()
-    #house.parseBuilding(chunjiang)
-    #house.parseBuilding(qinchengda)
-    #house.parseBuilding(longguang)
+    house.parseBuilding(baochang)
+    house.parseBuilding(baochang2)
+    house.parseBuilding(jiazhaoye)
     house.parseBuilding(qianhai)
     house.parseBuilding(huizhan)
