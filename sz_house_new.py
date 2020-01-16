@@ -151,10 +151,23 @@ huizhan='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42741'
 baochang ='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42713'
 baochang2='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42699'
 jiazhaoye='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42593'
+dehong='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42953'
+furun='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42934'
+shenshan='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42884'
+kaiyuna='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42881'
+zhidi='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42854'
+zhongdian='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42640'
+jingji='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42583'
+zhenye='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42579'
+huihuang='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42641'
+shenwan='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42683'
+zhonghai='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42716'
+jiulongtai='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42725'
+beiyuehui='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42993'
+dehongtianxia='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42953'
+furunleting='http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=42934'
 if __name__ == '__main__':
     house = HouseToTxt()
-    house.parseBuilding(baochang)
-    house.parseBuilding(baochang2)
-    house.parseBuilding(jiazhaoye)
-    house.parseBuilding(qianhai)
-    house.parseBuilding(huizhan)
+    house.parseBuilding(beiyuehui)
+    house.parseBuilding(dehongtianxia)
+    house.parseBuilding(furunleting)

@@ -9,7 +9,8 @@ class v_qq():
     # 初始化函数
     def __init__(self):
         #self.channels = ["tv","movie","child","variety","cartoon","doco"]
-        self.channels = ["variety","cartoon","doco"]
+        #self.channels = ["variety","cartoon","doco"]
+        self.channels = ["child"]
         self.baseUrl = 'https://v.qq.com/channel/child?_all=1&listpage=1&sort=18&channel={}'
         self.nextUrl = "https://v.qq.com/x/bu/pagesheet/list?_all=1&append=1&channel={}&listpage=2&pagesize=30&sort=18&offset={}"
         self.file_path = f'.//pic//'
@@ -90,8 +91,10 @@ class v_qq():
                     value['name'] = "".join(name)
                     value['desc'] = "".join(desc)
 
-                    value['picurl'] = "http:"+"".join(picurl)
-                    value['pic_name']= str(abs(hash(value['picurl'])))+'.jpg'
+                    #value['picurl'] = "http:"+"".join(picurl)
+                    #value['pic_name']= str(abs(hash(value['picurl'])))+'.jpg'
+                    
+                    value['cid'] = "".join(data_float)
                     value['data_float'] = self.data_float_url+"".join(data_float)
 
                     #获取详情json数据
