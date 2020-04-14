@@ -4,6 +4,7 @@ importlib.reload(sys)
 import requests
 import lxml.etree as etree
 import os
+import selenium as webdriver
 
 UA_LIST = [
     "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1",
@@ -45,7 +46,9 @@ UA_LIST = [
 class shiwen():
     # 初始化函数
     def __init__(self):
-        self.huiben_type ={'guoneihuiben','guowaihuiben','guoxuezaojiao','kewenlangsong','shuiqiangushi','yingwenhuiben'}
+        #self.huiben_type ={'guoneihuiben','guowaihuiben','guoxuezaojiao','kewenlangsong','shuiqiangushi','yingwenhuiben'}
+
+        self.huiben_type ={'guoneihuiben'}
         self.baseUrl = 'https://www.youshenghuiben.com/{}/{}'
         self.firstUrl = 'https://www.youshenghuiben.com/{}'
         self.soundUrl = "https://so.gushiwen.org/viewplay.aspx?id={}"
@@ -131,6 +134,7 @@ class shiwen():
 
     #获取声音url
     def getSound(self,url):
+        print(f"sound url:{url}")
         html = self.getHtml(url)
         return self.parseSoundUrl(html)
 
