@@ -1,4 +1,5 @@
 import importlib
+import random
 import sys
 importlib.reload(sys)
 import requests
@@ -74,6 +75,7 @@ class shiwen():
     def getHtml(self,url):
         ''' 爬取网页数据 '''
         print(f"getHtml...{url}")
+        self.headers['user-agent'] = random.choice(UA_LIST)
         html = requests.get(url, headers=self.headers)
         html.encoding = 'utf-8'
         text = html.text

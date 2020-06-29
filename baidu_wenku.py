@@ -9,10 +9,9 @@ from tqdm import tqdm
 
 class Baidu(object):
     def __init__(self):
-
-        self.headers = {
-            'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Mobile Safari/537.36'
-        }
+        self.headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0',
+                   'Accept':'*/*'
+                   }
         self.rtcs_flag = '1'
         self.rtcs_ver = '3.1'
         self.base_url = 'http://wkrtcs.bdimg.com/rtcs/webapp'
@@ -168,6 +167,6 @@ class Baidu(object):
 
 
 if __name__ == '__main__':
-    url = input('https://wenku.baidu.com/view/b3299351747f5acfa1c7aa00b52acfc789eb9f0e')
+    url = f'https://wenku.baidu.com/view/b3299351747f5acfa1c7aa00b52acfc789eb9f0e'
     b = Baidu()
     b.run(url)

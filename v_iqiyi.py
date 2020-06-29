@@ -8,11 +8,10 @@ import os
 class v_qq():
     # 初始化函数
     def __init__(self):
-        '''define tencent channel'''
         #self.channels = ["tv","movie","child","variety","cartoon","doco"]
         #self.channels = ["variety","cartoon","doco"]
         self.channels = ["child"]
-        self.baseUrl = 'https://v.qq.com/channel/child?_all=1&listpage=1&sort=18&channel={}'
+        self.baseUrl = 'https://list.iqiyi.com/www/15/-------------24-{}-1-iqiyi--.html'
         self.nextUrl = "https://v.qq.com/x/bu/pagesheet/list?_all=1&append=1&channel={}&listpage=2&pagesize=30&sort=18&offset={}"
         self.file_path = f'.//pic//'
         self.headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0',
@@ -75,16 +74,16 @@ class v_qq():
         if len(html) != 0:
             try:
                 tree = etree.HTML(html, parser=etree.HTMLParser(encoding='utf-8'))
-                nodes = tree.xpath('//div[@class="list_item"]')
+                nodes = tree.xpath('//div[@id="block-D"]/ul[@class="qy-mod-ul"]/li[class="qy-mod-li"]')
                 id = 1
                 values = []
                 for node in nodes:
                     value = {}
-                    figure_caption = node.xpath('./a/div[@class="figure_caption"]/text()')
-                    videourl = node.xpath('./div[@class="figure_detail figure_detail_two_row"]/a/@href')
-                    name = node.xpath('./div[@class="figure_detail figure_detail_two_row"]/a/text()')
-                    desc = node.xpath('./div[@class="figure_detail figure_detail_two_row"]/div[@class="figure_desc"]/text()')
-                    picurl = node.xpath('./a/img/@src')
+                    figure_caption = node.xpath('./div/div[@class="title-wrap "]/p[@class="main"]/a/text()')
+                    videourl = node.xpath('./div/div[@class="y-mod-link-wrap"]/a/@href')
+                    name = node.xpath('./div/div[@class="title-wrap "]/p[@class="main"]/a/text()')
+                    desc = node.xpath('./div/div[@class="title-wrap "]/p[@class="sub"]/text()')
+                    picurl = node.xpath('./div/div[@class="y-mod-link-wrap"]/a/img/@src')
                     data_float = node.xpath('./a/@data-float')
 
                     value['figure_caption'] = "".join(figure_caption)
@@ -92,8 +91,8 @@ class v_qq():
                     value['name'] = "".join(name)
                     value['desc'] = "".join(desc)
 
-                    value['picurl'] = "http:"+"".join(picurl)
-                    value['pic_name']= str(abs(hash(value['picurl'])))+'.jpg'
+                    #value['picurl'] = "http:"+"".join(picurl)
+                    #value['pic_name']= str(abs(hash(value['picurl'])))+'.jpg'
                     
                     value['cid'] = "".join(data_float)
                     value['data_float'] = self.data_float_url+"".join(data_float)
@@ -103,7 +102,7 @@ class v_qq():
 
                     self.file.write(str(value).encode('utf-8').decode('utf-8'))
                     self.file.write(f'\n')
-                    self.download(value['picurl'],value['pic_name'])
+                    #self.download(value['picurl'],value['pic_name'])
                     values.append(value)
                 return values
             except:

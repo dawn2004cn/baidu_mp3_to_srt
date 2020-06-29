@@ -11,12 +11,13 @@ import shutil
 
 #detailUrl = 'http://ris.szpl.gov.cn/bol/'
 
-detailUrl = 'http://zjj.sz.gov.cn/ris/bol/szfdc/'
+detailUrl = 'http://data.fz0752.com/jygs/buildinglist.shtml'
 class HouseToTxt():
     # 初始化函数
     def __init__(self):
         # 定义初始的文件路径，需要拼接
         self.detailUrl = "http://zjj.sz.gov.cn/ris/bol/szfdc/"
+        self.listUrl = "http://data.fz0752.com/jygs/buildinglist.shtml"
         # 定义将数据写入到test.txt文件
         #self.file = open("test.txt", "w",encoding='utf-8')
     # 析构函数
@@ -25,7 +26,7 @@ class HouseToTxt():
         print(f'__del__:{self.detailUrl}')
 
     def opencsv(self):
-        self.file = open(self.building_file, "w", encoding='utf-8')
+        self.file = open(self.building_file, "a", encoding='utf-8')
 
     def closecsv(self):
         self.file.close()
@@ -203,40 +204,32 @@ class HouseToTxt():
         df1["使用率"] = df1.apply(lambda x:'{:.2%}'.format(float(x['户内面积(平方米)'])/float(x['建筑面积(平方米)'])),axis=1)
         print(df1)
         df1.to_excel(dst_file)
+    def getBuildingList(self):
 
-#此处从http://zjj.sz.gov.cn/ris/bol/szfdc/index.aspx 中查找到要爬取的楼盘地址。
+#此处从 http://data.fz0752.com/jygs/buildinglist.shtml 中查找到要爬取的楼盘地址。
 channels = ["http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=43133",
             "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=43093",
             "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=43194",
             "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=43233",
             "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=43275",
             "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=43373",
-            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=43393",
-            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=43713",
+            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=43393"]
+channels1 = ["http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=43713",
             "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=43393",
             "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=43373",
             "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=43275",
             "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=43233"]
 channels2 = ["http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=43773",
              "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=43793"]
-channels3=["http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=38393"]
+channels3 = ["http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=38393"]
 
-channels4=["http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=26087",
+channels4 = ["http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=26087",
            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=39878"]
 
-channels5=["http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=44113"]
-channels6=["http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=44593",
-            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=44753"]
-            
-channels7=["http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=44913",
-            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=44934",
-            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=44973"]
-
-channels8=["http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=44473",
-            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=44453"]
+channels5 = ["http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=43953"]
 
 if __name__ == '__main__':
-    for channel in channels8:
+    for channel in channels5:
         house = HouseToTxt()
         house.parseBuilding(channel)
     #house.csv_to_excel_pd_dir()
