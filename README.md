@@ -4,30 +4,30 @@ mp3转换为srt文件
 百度tts转文本
 # baidu_wenku
 百度文库下载 未验证
-#baobao88
+# baobao88
 baobao88资源 爬取
-#chinese_city
+# chinese_city
 深圳房地产网房价抓取
-#detect
+# detect
 人脸检测
-#huiben huiben_new
+# huiben huiben_new
 有声绘本网https://www.youshenghuiben.com/ 资源
-#maoyan
+# maoyan
 猫眼评分抓取
-#picture_convert
+# picture_convert
 图片转换
-#sanzijing
+# sanzijing
 三字经故事https://www.sanzijing.org
 #shiwen
 古诗文网
 #sz_house sz_house_new
 深圳房地产信息网房价
-#today_poetry
+# today_poetry
 每日一诗
-#v_qq
+# v_qq
 腾讯视频
-#weather
+# weather
 天气
-#wechat_clean
+# wechat_clean
 微信清理
-#xiaoya_audio
+# xiaoya_audio
