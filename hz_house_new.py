@@ -232,6 +232,3 @@ if __name__ == '__main__':
     for channel in channels5:
         house = HouseToTxt()
         house.parseBuilding(channel)
-    #house.csv_to_excel_pd_dir()
-    #house.parseBuilding(dehongtianxia)
-    #house.parseBuilding(furunleting)
