@@ -7,6 +7,7 @@ import pandas as pd
 import openpyxl
 import os
 import shutil
+import urllib.parse
 
 
 #detailUrl = 'http://ris.szpl.gov.cn/bol/'
@@ -67,6 +68,9 @@ class HouseToTxt():
         tree = etree.HTML(html, parser=etree.HTMLParser(encoding='utf-8'))
         name = tree.xpath('.//table[@class="table ta-c table2 table-white"][1]/tr[1]/td[2]/text()')
         building_name = "".join(name).replace(u'\r\n','').strip()
+        
+        query = dict(urllib.parse.parse_qsl(urllib.parse.urlsplit(url).query))
+        building_name = building_name+"_"+query['id']
         self.building_file = f'{building_name}.csv'
 
     #根据url 获取楼栋url
@@ -228,15 +232,28 @@ channels5=["http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=44113"]
 channels6=["http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=44593",
             "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=44753"]
             
-channels7=["http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=44913",
-            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=44934",
-            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=44973"]
+channels7=[ "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=50753",
+            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=50754"]
 
-channels8=["http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=44473",
-            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=44453"]
+channels8=["http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=50093",
+            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=50034",
+            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=49994",
+            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=50134",
+            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=50193",
+            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=50233",
+            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=50313",
+            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=50353",
+            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=50373",
+            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=50453",
+            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=50535",
+            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=50553",
+            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=50717",
+            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=49038",
+            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=48974",
+            "http://zjj.sz.gov.cn/ris/bol/szfdc/projectdetail.aspx?id=48914"]
 
 if __name__ == '__main__':
-    for channel in channels8:
+    for channel in channels7:
         house = HouseToTxt()
         house.parseBuilding(channel)
     #house.csv_to_excel_pd_dir()

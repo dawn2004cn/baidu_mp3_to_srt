@@ -18,15 +18,9 @@ baobao88资源 爬取
 图片转换
 # sanzijing
 三字经故事https://www.sanzijing.org
-<<<<<<< HEAD
-#shiwen
-古诗文网
-#sz_house sz_house_new
-=======
 # shiwen
 古诗文网
 # sz_house sz_house_new
->>>>>>> bb7a5097d4b74626ea051db48fd679e0c20a8bb4
 深圳房地产信息网房价
 # today_poetry
 每日一诗

@@ -135,12 +135,6 @@ class v_qq():
             self.parseLeft(channel)
             self.close()
 
-    def get_all_data_total(self):
-        for channel in self.channels:
-            url = self.baseUrl.format(channel)
-            html = self.getHtml(url)
-            data_total = self.getdata_total(html)
-            print(data_total)
 
 if __name__ == '__main__':
     v_qq = v_qq()

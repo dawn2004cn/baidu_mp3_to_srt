@@ -5,14 +5,14 @@ import requests
 import lxml.etree as etree
 import os
 
-class v_qq():
+class v_iqiyi():
     # 初始化函数
     def __init__(self):
         #self.channels = ["tv","movie","child","variety","cartoon","doco"]
         #self.channels = ["variety","cartoon","doco"]
-        self.channels = ["child"]
-        self.baseUrl = 'https://list.iqiyi.com/www/15/-------------24-{}-1-iqiyi--.html'
-        self.nextUrl = "https://v.qq.com/x/bu/pagesheet/list?_all=1&append=1&channel={}&listpage=2&pagesize=30&sort=18&offset={}"
+        self.channels = ["15"]
+        self.baseUrl = 'https://list.iqiyi.com/www/{}/-------------24-1-1-iqiyi--.html'
+        self.nextUrl = "https://pcw-api.iqiyi.com/search/recommend/list?channel_id=15&data_type=1&mode=24&page_id={}&ret_num=48&session=40b2fde367d4457457ac5c79fec1040a"
         self.file_path = f'.//pic//'
         self.headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0',
                    'Accept':'*/*'
@@ -142,5 +142,5 @@ class v_qq():
             print(data_total)
 
 if __name__ == '__main__':
-    v_qq = v_qq()
-    v_qq.parseAll()
+    v_iqiyi = v_iqiyi()
+    v_iqiyi.parseAll()
